@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pro-Home - Housing Counseling</title>
+  <!-- Google Material Symbols for Chat Icon -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chat" />
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="#banner">
+          <img src="assets/images/logo.png" alt="Pro-Home Logo" />
+        </a>
+      </div>
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <ul>
+          <li><a href="#banner" data-i18n="nav_home">Home</a></li>
+          <li><a href="#agency-overview" data-i18n="nav_agency">Agency Overview</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <!-- Language Selector -->
+      <select id="language-selector">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="pt">Português</option>
+        <option value="ht">Kreyòl Ayisyen</option>
+      </select>
+      <!-- Donate Button Always Visible -->
+      <a href="#donate" class="donate-btn" data-i18n="donate">Become A Community Sponsor - Donate Now</a>
+      <!-- Mobile Hamburger Menu Button -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- Mobile Slider Menu (Only visible on Mobile) -->
+  <div id="mobile-nav" class="mobile-nav">
+    <button id="mobile-nav-close" class="mobile-nav-close">&times;</button>
+    <ul>
+      <li><a href="#banner" data-i18n="nav_home">Home</a></li>
+      <li><a href="#agency-overview" data-i18n="nav_agency">Agency Overview</a></li>
+      <li><a href="#info" data-i18n="classes_title">Services</a></li>
+      <li><a href="#info" data-i18n="classes_title">Classes &amp; Events</a></li>
+      <li><a href="#info" data-i18n="news_title">News &amp; Resources</a></li>
+      <li><a href="#info" data-i18n="counselor_title">Housing Counselor's Corner</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+      <li><a href="#classes" data-i18n="classes_section_title">FTHB Seminar Resources</a></li>
+    </ul>
+  </div>
+
+  <!-- Banner Section with Blurred Background Image -->
+  <section id="banner" class="banner">
+    <div class="banner-overlay">
+      <div class="container">
+        <h2 data-i18n="banner_title">Pro-Home, Inc.</h2>
+        <p data-i18n="banner_text">
+          Pro-Home, Inc. provides one-on-one and group counseling in person or by phone. Counseling services include pre-purchase, first time homebuyer, foreclosure/short sale, tenant/landlord, financial literacy and fair housing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Info Cards -->
+  <section id="info" class="content-section">
+    <div class="container">
+      <div class="info-cards">
+        <!-- Card 1: Services -->
+        <div class="card">
+          <h3 data-i18n="services_title">SERVICES</h3>
+          <p data-i18n="services_text">
+            Pro-Home, Inc. provides one-on-one and group counseling in person or by phone. Counseling services include pre-purchase, first time homebuyer, foreclosure/short sale, tenant/landlord, financial literacy and fair housing.
+          </p>
+        </div>
+        <!-- Card 2: Classes & Events -->
+        <div class="card">
+          <h3 data-i18n="classes_title">CLASSES &amp; EVENTS</h3>
+          <p data-i18n="classes_text">
+            Pro-Home, Inc. offers various classes and workshops that include pre-purchase, first time homebuyer, financial literacy and fair housing. We also hold fundraising and organizational events from time-to-time.
+          </p>
+        </div>
+        <!-- Card 3: News & Resources -->
+        <div class="card">
+          <h3 data-i18n="news_title">NEWS &amp; RESOURCES</h3>
+          <p data-i18n="news_text">
+            Pro-Home, Inc. makes various community resource information available, both online and in our office, for residents of Southeastern Massachusetts that are in need of services not available through our organization.
+          </p>
+        </div>
+        <!-- Card 4: Housing Counselor's Corner -->
+        <div class="card">
+          <h3 data-i18n="counselor_title">HOUSING COUNSELOR'S CORNER</h3>
+          <p data-i18n="counselor_text">
+            Pro-Home, Inc. produces short videos that discuss single topic issues. New episodes are released monthly. If you have specific questions or issues that are not covered, please contact our office for more assistance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wrapper for Sections 2 and 3 (Side by Side on Desktop) -->
+  <div class="two-column-wrapper">
+    <!-- Section 2: Community Sponsors -->
+    <section id="sponsors" class="content-section">
+      <div class="container">
+        <h2 data-i18n="sponsors_title">Special Thanks To Our Community Sponsorships!</h2>
+        <div class="sponsors-list">
+          <div class="sponsor-tier">
+            <h4>Corporate Contributor</h4>
+            <p>
+              Bristol County Savings Bank<br>
+              Eastern Bank
+            </p>
+          </div>
+          <div class="sponsor-tier">
+            <h4>Community Partner</h4>
+            <p>
+              BankFive<br>
+              First Home Mortgage
+            </p>
+          </div>
+          <div class="sponsor-tier">
+            <h4>Company Donor</h4>
+            <p>Bluestone Bank</p>
+          </div>
+          <div class="sponsor-tier">
+            <h4>Small Business Sponsors</h4>
+            <p>
+              Federal Loan Bank of Boston<br>
+              Jordan's Furniture<br>
+              Massachusetts Association of REALTORS®<br>
+              REALTOR® Association of Southeastern Massachusetts<br>
+              Taunton Rotary
+            </p>
+          </div>
+        </div>
+        <p class="sponsor-cta" data-i18n="sponsors_subtitle">
+          Please consider sponsoring Pro-Home, Inc. by making a tax deductible contribution today.
+          <a href="#donate" class="donate-link">CLICK HERE for more information.</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3: Upcoming Classes -->
+    <section id="classes" class="content-section">
+      <div class="container">
+        <h2 data-i18n="classes_section_title">Upcoming Classes</h2>
+        <div class="class-info">
+          <h3 data-i18n="first_class_title">First Time Homebuyer Seminar (2 night workshop)</h3>
+          <ul data-i18n="first_class_details">
+            <li>Tuesday, February 18th and 25th, 5:00pm - 9:15pm</li>
+            <li>Tuesday, April 22nd and 29th, 5:00pm - 9:15pm</li>
+            <li>Tuesday, June 10th and 17th, 5:00pm - 9:15pm</li>
+            <li>Tuesday, August 19th and 26th, 5:00pm - 9:15pm</li>
+            <li>Tuesday, October 21st and 28th, 5:00pm - 9:15pm</li>
+          </ul>
+          <h3 data-i18n="financial_title">Financial Literacy Seminar</h3>
+          <p data-i18n="financial_text">Stay tuned for upcoming dates.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-column footer-info">
+        <h4 data-i18n="footer_info_title">Pro-Home, Inc.</h4>
+        <p data-i18n="footer_address">
+          40 Summer Street<br>
+          Taunton, MA 02780
+        </p>
+        <p data-i18n="footer_phone">(508) 821-2514</p>
+        <p>
+          <a href="mailto:info@prohomeinc.org" data-i18n="footer_email">info@prohomeinc.org</a>
+        </p>
+      </div>
+      <div class="footer-column footer-links">
+        <h4 data-i18n="footer_links_title">Quick Links</h4>
+        <ul>
+          <li><a href="#agency-overview" data-i18n="nav_agency">Agency Overview</a></li>
+          <li><a href="#info" data-i18n="services_title">Services</a></li>
+          <li><a href="#info" data-i18n="classes_title">Classes/Events</a></li>
+          <li><a href="#info" data-i18n="news_title">News/Resources</a></li>
+          <li><a href="#info" data-i18n="counselor_title">Housing Counselor's Corner</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+          <li><a href="#classes" data-i18n="classes_section_title">FTHB Seminar Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-column footer-social">
+        <h4 data-i18n="footer_follow_title">Follow Us</h4>
+        <ul>
+          <li><a href="https://facebook.com/YourPage" target="_blank">Facebook</a></li>
+          <li><a href="https://twitter.com/YourPage" target="_blank">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p data-i18n="footer_bottom">&copy;2025 Pro-Home, Inc. All rights reserved.</p>
+        <p data-i18n="footer_bottom_text">
+          PRO-HOME, INC. IS A 501(c)(3) NON-PROFIT CORPORATION FOR THE PRODUCTION &amp; PROTECTION OF AFFORDABLE HOUSING.
+          WE ARE ADA ACCESSIBLE AND PROVIDE INTERPRETERS TO THOSE WHO ARE DEAF, HARD OF HEARING OR ONLY SPEAK A FOREIGN LANGUAGE.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+   <!-- Chat Widget HTML -->
+  <!-- Chat Toggle Button (using the Google chat icon) -->
+  <button id="chat-toggle" class="chat-toggle">
+    <span class="material-symbols-outlined">chat</span>
+  </button>
+
+  <!-- Chat Widget Container -->
+  <div id="chat-widget" class="chat-widget">
+    <div class="chat-header">
+      <span>Chat</span>
+      <button id="chat-close" title="Close Chat">&times;</button>
+    </div>
+    <div id="chat-body" class="chat-body">
+      <!-- Chat messages will be appended here -->
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chat-message" placeholder="Type your message..." />
+      <button id="chat-send">Send</button>
+    </div>
+  </div>
+
+  <!-- JavaScript for Mobile Slider Menu -->
+  <script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileNavClose = document.getElementById('mobile-nav-close');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNav.classList.add('open');
+    });
+
+    mobileNavClose.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+    });
+  </script>
+
+  <!-- JavaScript for Loading Translations -->
+  <script>
+    // Function to load translation JSON and update page elements with data-i18n attributes
+    function loadTranslations(lang) {
+      fetch(lang + '.json')
+        .then(response => response.json())
+        .then(translations => {
+          document.querySelectorAll('[data-i18n]').forEach(elem => {
+            const key = elem.getAttribute('data-i18n');
+            if (translations[key]) {
+              // Replace newline characters with a line break if needed.
+              elem.innerHTML = translations[key].replace(/\n/g, '<br>');
+            }
+          });
+        })
+        .catch(err => console.error('Error loading translations:', err));
+    }
+
+    // Get the language from localStorage (if previously selected) or default to English.
+    let currentLang = localStorage.getItem('lang') || 'en';
+    loadTranslations(currentLang);
+
+    // Set the language selector’s value and add an event listener to change language.
+    document.addEventListener('DOMContentLoaded', function() {
+      const langSelector = document.getElementById('language-selector');
+      langSelector.value = currentLang;
+      langSelector.addEventListener('change', function() {
+        const selectedLang = this.value;
+        localStorage.setItem('lang', selectedLang);
+        loadTranslations(selectedLang);
+      });
+    });
+  </script>
+  
+  <!-- Include the chat JavaScript -->
+  <script src="chat.js"></script>
+</body>
+ 
+</html>

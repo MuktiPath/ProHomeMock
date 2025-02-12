@@ -1,0 +1,437 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  background-color: #fff;
+  color: #333;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.logo img {
+  max-height: 60px;
+}
+
+/* Desktop Navigation */
+.desktop-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.desktop-nav ul li {
+  margin: 0 10px;
+}
+.desktop-nav a {
+  color: #333;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: background 0.3s ease;
+}
+.desktop-nav a:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+/* Donate Button */
+.donate-btn {
+  background-color: #ffdd57;
+  color: #541a22;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Mobile Menu Button (Hamburger) */
+.mobile-menu-btn {
+  display: none;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Mobile Slider Menu */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  padding: 20px;
+}
+.mobile-nav.open {
+  right: 0;
+}
+.mobile-nav-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  display: block;
+  text-align: right;
+  width: 100%;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+}
+.mobile-nav li {
+  margin-bottom: 15px;
+}
+.mobile-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+/* Banner Section with Blurred Background */
+.banner {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/images/town.jpg') no-repeat center center;
+  background-size: cover;
+  filter: blur(8px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+.banner-overlay {
+  position: relative;
+  /* Removed extra overlay color so the blurred image shows through */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+}
+.banner-overlay h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+.banner-overlay p {
+  font-size: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+
+/* Content Sections */
+.content-section {
+  padding: 40px 0;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.content-section h2 {
+  text-align: center;
+  color: #551b24;
+  margin-bottom: 20px;
+}
+/* Colored gap between sections */
+.content-section:not(:first-of-type) {
+  border-top: 10px solid #fbd99000;
+}
+
+/* Info Cards (Section 1) */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.info-cards .card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.info-cards .card h3 {
+  color: #551b24;
+  margin-bottom: 10px;
+}
+
+/* Two Column Wrapper for Sections 2 & 3 */
+.two-column-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.two-column-wrapper .content-section {
+  flex: 1 1 48%;
+}
+
+/* Sponsors Section (Section 2) */
+.sponsors-list {
+  margin-bottom: 20px;
+}
+.sponsors-list .sponsor-tier {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+.sponsors-list .sponsor-tier:last-child {
+  border-bottom: none;
+}
+.sponsors-list .sponsor-tier h4 {
+  color: #551b24;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.sponsors-list .sponsor-tier p {
+  color: #333;
+  margin: 0;
+}
+.sponsor-cta {
+  text-align: center;
+  font-weight: bold;
+}
+.sponsor-cta a {
+  color: #0073e6;
+  text-decoration: underline;
+}
+
+/* Classes Section (Section 3) */
+.class-info {
+  text-align: left;
+}
+.class-info h3 {
+  color: #551b24;
+  margin-top: 20px;
+}
+.class-info ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+.class-info ul li {
+  margin-bottom: 10px;
+}
+
+/* Contact Section */
+address {
+  font-style: normal;
+  line-height: 1.8;
+  text-align: center;
+}
+address a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  background-color: #541a22;
+  color: #fff;
+  padding-top: 20px;
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+}
+.footer-column h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #fbd990;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin-bottom: 5px;
+}
+.footer-column ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.footer-column ul li a:hover {
+  text-decoration: underline;
+}
+.footer-bottom {
+  background-color: #fff;
+  color: #222;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+/* Chat Toggle Button Styles - apply for all screen sizes */
+.chat-toggle {
+  position: fixed;       /* Fixed to viewport */
+  bottom: 20px;          /* 20px from the bottom */
+  right: 20px;           /* 20px from the right */
+  z-index: 1001;         /* High z-index so it stays on top */
+  background-color: #551b24;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Chat Widget Container - apply for all screen sizes */
+.chat-widget {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  display: none;  /* Hidden initially */
+  flex-direction: column;
+  z-index: 1000;
+}
+
+/* Chat Header */
+.chat-header {
+  background-color: #551b24;
+  color: #fff;
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Chat Body */
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Chat Input Area */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.chat-input button {
+  background-color: #551b24;
+  border: none;
+  color: #fff;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+/* Base style for all messages */
+.chat-message {
+  max-width: 80%;
+  margin: 8px;
+  padding: 10px 15px;
+  border-radius: 15px;
+  word-wrap: break-word;
+}
+
+/* Bot messages: aligned left with a light blue background */
+.chat-message.bot {
+  background-color: #e1f5fe;  /* Light blue */
+  align-self: flex-start;
+  border-top-left-radius: 0;
+  color: #333;
+}
+
+/* User messages: aligned right with a light green background */
+.chat-message.user {
+  background-color: #c8e6c9;  /* Light green */
+  align-self: flex-end;
+  border-top-right-radius: 0;
+  color: #333;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+  /* Stack info cards */
+  .info-cards {
+    grid-template-columns: 1fr;
+  }
+  /* Stack two columns */
+  .two-column-wrapper {
+    flex-direction: column;
+  }
+  .two-column-wrapper .content-section {
+    flex: 1 1 100%;
+  }
+  .banner-overlay h2 {
+    font-size: 36px;
+  }
+  .banner-overlay p {
+    font-size: 16px;
+  }
+
+  #language-selector {
+  margin: 0 10px;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+}
