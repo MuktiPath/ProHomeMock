@@ -32,7 +32,10 @@ header {
 }
 .logo img {
   max-height: 60px;
+  max-width: 100%;  /* Prevents overflow on small screens */
+  height: auto;  /* Maintains aspect ratio */
 }
+
 
 /* Desktop Navigation */
 .desktop-nav ul {

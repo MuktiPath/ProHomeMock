@@ -1,4 +1,4 @@
-// Select DOM elements
+// Select DOM elements 
 const chatToggle = document.getElementById('chat-toggle');
 const chatWidget = document.getElementById('chat-widget');
 const chatClose = document.getElementById('chat-close');
@@ -8,6 +8,82 @@ const chatMessageInput = document.getElementById('chat-message');
 
 // Global conversation history to track the dialogue
 let conversationHistory = [];
+
+/**
+ * formatMessage converts plain text into HTML with bullet points and headers.
+ * - Lines starting with "* " become list items.
+ * - Lines starting with "**" and containing "**:" become headers.
+ * - Other non-empty lines are wrapped in paragraph tags.
+ */
+function formatMessage(text) {
+  const lines = text.split('\n');
+  let formatted = '';
+  let inList = false;
+
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    
+    // Check for header lines e.g., **Donations:** Description...
+    if (trimmed.startsWith('**') && trimmed.includes('**:')) {
+      // Close any open list
+      if (inList) {
+        formatted += '</ul>';
+        inList = false;
+      }
+      // Extract header text and remainder using a regex
+      const headerMatch = trimmed.match(/^\*\*(.+?)\*\*:\s*(.*)/);
+      if (headerMatch) {
+        const headerText = headerMatch[1].trim();
+        const remainder = headerMatch[2].trim();
+        formatted += `<h3>${headerText}</h3>`;
+        if (remainder) {
+          formatted += `<p>${remainder}</p>`;
+        }
+        return; // Skip further processing for this line
+      }
+    }
+    
+    // Check for bullet list items
+    if (trimmed.startsWith('* ')) {
+      if (!inList) {
+        formatted += '<ul>';
+        inList = true;
+      }
+      formatted += `<li>${trimmed.substring(2)}</li>`;
+    } else {
+      // Close list if we're in one
+      if (inList) {
+        formatted += '</ul>';
+        inList = false;
+      }
+      // Wrap non-empty lines in paragraph tags
+      if (trimmed) {
+        formatted += `<p>${trimmed}</p>`;
+      }
+    }
+  });
+  
+  if (inList) {
+    formatted += '</ul>';
+  }
+  
+  return formatted;
+}
+
+// Updated helper: Append a message to the chat body.
+// For bot messages, use innerHTML to render formatted HTML.
+// For user messages, use textContent.
+function appendMessage(sender, text) {
+  const msgElem = document.createElement('div');
+  msgElem.className = `chat-message ${sender}`;
+  if (sender === 'bot') {
+    msgElem.innerHTML = formatMessage(text);
+  } else {
+    msgElem.textContent = text;
+  }
+  chatBody.appendChild(msgElem);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
 
 // Toggle the chat widget visibility
 chatToggle.addEventListener('click', () => {
@@ -27,17 +103,7 @@ chatClose.addEventListener('click', () => {
   chatToggle.style.display = 'block';
 });
 
-// Helper: Append a message to the chat body
-function appendMessage(sender, text) {
-  const msgElem = document.createElement('div');
-  // The class will be "chat-message bot" or "chat-message user"
-  msgElem.className = `chat-message ${sender}`;
-  msgElem.textContent = text;
-  chatBody.appendChild(msgElem);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
-
-// Send a message using the /chat endpoint on your Python server
+// Send a message using the /stream endpoint with streaming handling
 function sendMessage() {
   const message = chatMessageInput.value.trim();
   if (!message) return;
@@ -47,8 +113,8 @@ function sendMessage() {
   conversationHistory.push({ sender: 'user', text: message });
   chatMessageInput.value = '';
   
-  // Make a POST request to the /chat endpoint
-  fetch('http://localhost:9000/chat', { // Replace with your actual server URL
+  // Make a POST request to the /stream endpoint
+  fetch('https://my-chat-app-1092979417464.us-east1.run.app/stream', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -60,12 +126,28 @@ function sendMessage() {
     if (!response.ok) {
       throw new Error('Server response was not OK');
     }
-    return response.json();
-  })
-  .then(data => {
-    // Append the bot's response and update conversation history
-    appendMessage('bot', data.text);
-    conversationHistory.push({ sender: 'bot', text: data.text });
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+    let botResponse = "";
+    
+    function read() {
+      reader.read().then(({ done, value }) => {
+        if (done) {
+          // Once complete, append the full bot response
+          appendMessage('bot', botResponse);
+          conversationHistory.push({ sender: 'bot', text: botResponse });
+          return;
+        }
+        const chunk = decoder.decode(value, { stream: true });
+        botResponse += chunk;
+        // Optionally update intermediate state here if desired.
+        read();
+      }).catch(err => {
+        console.error("Error reading stream:", err);
+        appendMessage('bot', "Error processing stream.");
+      });
+    }
+    read();
   })
   .catch(err => {
     console.error('Error connecting to server:', err);
