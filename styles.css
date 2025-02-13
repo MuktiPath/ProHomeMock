@@ -407,6 +407,7 @@ footer {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+  
   .desktop-nav {
     display: none;
   }
@@ -431,10 +432,20 @@ footer {
     font-size: 16px;
   }
 
+  /* Hide the Community Sponsor Call Out (Donate Button) */
+  .donate-btn {
+    display: none;
+  }
+
+  /* Make the language selector more subtle */
   #language-selector {
-  margin: 0 10px;
-  padding: 5px;
-  font-size: 1rem;
+    margin: 0 10px;
+    padding: 4px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    background: transparent;
+    border: none;
+  }
 }
 
 }
